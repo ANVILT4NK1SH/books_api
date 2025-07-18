@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-
   describe 'validations' do
     it 'is valid with valid attributes' do
       book = build(:book)

@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenicate_request
   before_action :set_book, only: [ :show, :update, :destroy ]
 
   def index
@@ -30,7 +31,7 @@ class BooksController < ApplicationController
 
   def destroy
     if @book.destroy
-      render json: nil, status: :ok
+      render json: @book, status: :ok
     else
       render json: @book.errors, status: :unprocessable_entity
     end

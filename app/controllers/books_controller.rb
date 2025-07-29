@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenicate_request, except: [ :index ]
-  before_action :set_book, only: [ :show, :update, :destroy ]
+  before_action :set_book, only: [  :update, :destroy ]
 
   def index
     books = Book.all
@@ -8,7 +8,8 @@ class BooksController < ApplicationController
   end
 
   def show
-    render json: BookBlueprint.render(@book, view: :normal), status: :ok
+    books = @current_user.books
+    render json: BookBlueprint.render(books, view: :normal), status: :ok
   end
 
   def create

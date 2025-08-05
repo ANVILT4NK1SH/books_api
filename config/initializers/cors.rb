@@ -16,7 +16,7 @@
 # end
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins "*"
+      origins "https://fe-books-xi.vercel.app", "https://fe-books-shawn-hartlines-projects.vercel.app", "https://fe-books-git-master-shawn-hartlines-projects.vercel.app", "http://localhost:4200"
       resource "*", headers: :any, methods: [ :get, :post, :put, :patch, :delete, :options, :head ]
     end
   end

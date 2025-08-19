@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "/books/mybooks", to: "books#show"
   resources :users, only: [ :create ]
   resources :books, except: [ :show ]
+  resources :notifications, only: [ :index ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

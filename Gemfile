@@ -42,6 +42,7 @@ gem "rack-attack"
 gem "pusher"
 gem "sidekiq"
 gem "sidekiq-scheduler"
+gem "rswag"
 
 group :production do
   gem "pg"

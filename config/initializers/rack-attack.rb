@@ -2,7 +2,9 @@ class Rack::Attack
   Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
 
   throttle("req/ip", limit: 5, period: 5.seconds) do |req|
-    req.ip
+    if req.path != "/api-docs"
+      req.ip
+    end
   end
 
   throttle("create_user/ip", limit: 1, period: 20.seconds) do |req|

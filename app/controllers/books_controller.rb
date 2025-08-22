@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [  :update, :destroy ]
 
   def index
-    books = Book.all
+    books = BookService.filter_books(book_params)
     render json: BookBlueprint.render(books, view: :normal), status: :ok
   end
 
@@ -13,9 +13,9 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = @current_user.books.new(book_params)
+    book = BookService.create_book(book_params, @current_user)
 
-    if book.save
+    if book.valid?
       render json: BookBlueprint.render(book, view: :normal), status: :created
     else
       render json: book.errors, status: :unprocessable_entity
